@@ -1,0 +1,229 @@
+/* =========================================================
+   Vinyl page  (Desktop 2)
+   Everything is sized in "u": 1u = 1px of the 1440 x 1024 design,
+   scaled to the viewport so the layout holds its proportions.
+   ========================================================= */
+:root {
+  --pink-dark: #b04a72;
+  --pink-mid: #dd86a3;
+  --pink-text: #a4526f;
+  --btn: #cc7694;
+  --btn-hover: #bf6686;
+
+  /* desktop / laptop / iPad landscape */
+  --u: min(calc(100vw / 1440), calc(100svh / 1024), 1.25px);
+  --shift: calc(74.5 * var(--u));      /* centres the RECORD on the page, like the design */
+}
+/* tablets (portrait) and phones */
+@media (max-width: 999px) {
+  :root {
+    --u: max(min(calc((100vw - 32px) / 480), calc(100svh / 900), 1.25px), 0.5px);
+    --shift: 0px;                      /* centre record + arm together so nothing clips */
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--pink-text);
+  background: radial-gradient(circle at 50% 14%, #fff1f3 0%, #ffe9ed 30%, #ffdfe5 70%, #ffd9e0 100%) fixed;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-x: clip;            /* the rotated arm's transparent corners must never cause sideways scroll */
+  padding: calc(69 * var(--u) + env(safe-area-inset-top, 0px)) 16px
+           calc(24 * var(--u) + env(safe-area-inset-bottom, 0px));
+}
+
+/* ---------- Heading ---------- */
+.title {
+  margin: 0;
+  font-family: "Times New Roman", Times, "Liberation Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.05;
+}
+.title .line-1 {
+  display: block;
+  font-size: min(calc(102 * var(--u)), 11.8vw);
+  color: var(--pink-dark);
+  letter-spacing: -0.01em;
+}
+.title .line-2 {
+  display: block;
+  margin-top: .16em;
+  font-size: min(calc(80 * var(--u)), 9.4vw);
+  color: var(--pink-mid);
+}
+.title .heart {
+  width: .5em;
+  height: .5em;
+  margin-left: .15em;
+  vertical-align: .02em;
+  display: inline-block;
+  animation: beat 1.6s ease-in-out infinite;
+}
+
+.message {
+  margin: calc(53 * var(--u)) 0 0;
+  max-width: 34em;
+  font-size: max(13px, calc(17.5 * var(--u)));
+  line-height: 1.3;
+  color: var(--pink-text);
+  text-wrap: balance;
+}
+
+/* ---------- Turntable ----------
+   Container = disc + tonearm, measured from the design:
+   disc 321 x 321, arm box 286 x 286 at (190, 3), pivot at 65.75% / 27.05% of the arm box. */
+.player {
+  position: relative;
+  width: calc(476 * var(--u));
+  aspect-ratio: 476 / 321;
+  margin-top: calc(38 * var(--u));
+  transform: translateX(var(--shift));
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.disc {
+  position: absolute;
+  /* disc.png has ~2.5% transparent padding; scale/offset so the VISIBLE record is exactly 321 x 321 */
+  left: -1.813%; top: -2.69%;
+  width: 71.07%;               /* 338.3 / 476 */
+  height: 105.4%;              /* 338.3 / 321 */
+  border-radius: 50%;
+  animation: spin 1.8s linear infinite;   /* ~33 RPM */
+  animation-play-state: paused;
+  will-change: transform;
+  pointer-events: none;
+}
+.player.is-playing .disc { animation-play-state: running; }
+
+.arm {
+  position: absolute;
+  left: 39.92%;                /* 190 / 476 */
+  top: 0.93%;                  /* 3 / 321  */
+  width: 60.08%;               /* 286 / 476 */
+  height: 89.1%;               /* 286 / 321 */
+  transform-origin: 65.75% 27.05%;          /* tonearm pivot */
+  transform: rotate(-24deg);                /* resting (lifted) position, JS takes over */
+  transition: transform .9s cubic-bezier(.45, .05, .25, 1);
+  filter: drop-shadow(0 6px 5px rgba(80, 20, 40, .28));
+  will-change: transform;
+}
+.arm.dragging  { transition: none; }
+.arm.following { transition: transform .6s linear; }
+.arm img { display: block; width: 100%; height: 100%; pointer-events: none; }
+
+/* grab area sits over the headshell and rotates with the arm */
+.arm-handle {
+  position: absolute;
+  left: 30.9%;
+  top: 73.9%;
+  width: max(21%, 52px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;          /* lets touch drag the arm instead of scrolling the page */
+  outline: none;
+}
+.arm.dragging .arm-handle { cursor: grabbing; }
+.arm-handle:focus-visible { box-shadow: 0 0 0 3px rgba(176, 74, 114, .55); }
+
+.arm-handle::after {           /* gentle pulse so she knows to touch it */
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .9);
+  animation: ping 1.9s ease-out infinite;
+}
+.player.is-playing .arm-handle::after,
+.arm.dragging .arm-handle::after { display: none; }
+
+/* ---------- Continue ---------- */
+.finished {
+  margin: calc(54 * var(--u)) 0 0;
+  font-size: max(14px, calc(18 * var(--u)));
+  color: var(--pink-dark);
+}
+
+.btn-continue {
+  margin-top: calc(22 * var(--u));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55em;
+  min-width: max(calc(246 * var(--u)), 190px);
+  height: max(calc(65 * var(--u)), 52px);
+  padding: 0 calc(34 * var(--u));
+  border-radius: 999px;
+  background: var(--btn);
+  color: #fff;
+  font-size: max(calc(26 * var(--u)), 18px);
+  font-weight: 400;
+  text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.btn-continue svg { width: .8em; height: .8em; }
+.btn-continue:hover { background: var(--btn-hover); box-shadow: 0 8px 22px rgba(204, 118, 148, .4); }
+.btn-continue:active { transform: scale(.97); }
+.btn-continue:focus-visible { outline: 3px solid rgba(176, 74, 114, .5); outline-offset: 3px; }
+
+/* ---------- Animations ---------- */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+@keyframes ping {
+  0%   { box-shadow: 0 0 0 0 rgba(221, 134, 163, .7); }
+  80%, 100% { box-shadow: 0 0 0 16px rgba(221, 134, 163, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title .heart, .arm-handle::after { animation: none; }
+}
+
+/* ---------- short landscape screens (phones turned sideways) ----------
+   Text on the left, turntable on the right, so everything fits without scrolling. */
+@media (max-height: 520px) and (orientation: landscape) {
+  :root {
+    --u: max(min(calc(100svh / 520), calc((100vw - 56px) / 1020), 1.25px), 0.4px);
+    --shift: 0px;
+  }
+  .page {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "title player" "msg player" "fin player" "btn player";
+    grid-template-rows: auto auto auto auto;
+    align-content: center;
+    justify-items: center;
+    column-gap: calc(28 * var(--u));
+    padding: calc(16px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px))
+             calc(16px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
+  }
+  .title   { grid-area: title; }
+  .message { grid-area: msg;   margin-top: calc(24 * var(--u)); }
+  .player  { grid-area: player; align-self: center; margin-top: 0; }
+  .finished{ grid-area: fin;   margin-top: calc(28 * var(--u)); }
+  .btn-continue { grid-area: btn; margin-top: calc(12 * var(--u)); }
+  .title .line-1 { font-size: min(calc(102 * var(--u)), 6.4vw); }
+  .title .line-2 { font-size: min(calc(80 * var(--u)), 5vw); }
+}
