@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Made In The 22</title>
+  <meta name="theme-color" content="#120d10">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/pages.css">
+</head>
+<body class="album">
+  <!-- Background: a looping, muted video. Put "my_wife.mp4" inside /assets
+       (my_baby.jpg is shown until the video loads, or if it is missing) -->
+  <div class="bg" aria-hidden="true">
+    <video class="bg-video" autoplay muted loop playsinline preload="auto" poster="assets/pictures/my_baby.jpg" tabindex="-1">
+      <source src="assets/my_wife.mp4" type="video/mp4">
+      <source src="assets/my%20wife.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="stage">
+    <!-- ================= Navigation ================= -->
+    <header class="nav">
+      <div class="nav-left" aria-hidden="true">
+        <svg class="ic-dots" viewBox="0 0 48 12"><circle cx="6" cy="6" r="5.5" fill="currentColor"/><circle cx="24" cy="6" r="5.5" fill="currentColor"/><circle cx="42" cy="6" r="5.5" fill="currentColor"/></svg>
+        <svg class="ic-chev" viewBox="0 0 24 34"><path d="M18 3 5 17l13 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="ic-chev" viewBox="0 0 24 34"><path d="m6 3 13 14L6 31" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <div class="nav-center" aria-hidden="true">
+        <span class="home"><svg viewBox="0 0 32 32"><path d="M4 14.5 16 4l12 10.5V27a1 1 0 0 1-1 1h-7v-8h-8v8H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg></span>
+        <span class="search">
+          <svg class="ic-search" viewBox="0 0 32 32"><circle cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="m21 21 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span class="search-text">What do you want to play?</span>
+          <span class="divider"></span>
+          <svg class="ic-heart" viewBox="0 0 32 32"><path d="M16 27S4 20 4 11.5A6.5 6.5 0 0 1 16 8a6.5 6.5 0 0 1 12 3.500C28 20 16 27 16 27z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
+        </span>
+      </div>
+
+      <div class="nav-right">
+        <svg class="ic-bell deco" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 23v-9a9 9 0 0 1 18 0v9l2 3H5z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M13 29a3 3 0 0 0 6 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <svg class="ic-people deco" viewBox="0 0 36 32" aria-hidden="true"><circle cx="12" cy="9" r="4.6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M3 27c0-5 4-8 9-8s9 3 9 8z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="25" cy="11" r="3.6" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M24 18.500c5.500-.5 10 2 10 8.500h-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+        <!-- profile picture → pop-up with Log Out -->
+        <div class="profile">
+          <button class="avatar-btn" id="avatarBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="profileMenu" aria-label="Lynn Margaret – account menu">
+            <img src="assets/pictures/my_baby.jpg" alt="" draggable="false">
+          </button>
+          <div class="menu" id="profileMenu" role="menu" hidden>
+            <button class="logout" id="logoutBtn" type="button" role="menuitem">Log Out</button>
+          </div>
+        </div>
+
+        <svg class="ic-x deco" viewBox="0 0 28 28" aria-hidden="true"><path d="M2 2l24 24M26 2 2 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </header>
+
+    <!-- ================= Album header ================= -->
+    <section class="hero">
+      <img class="thumb" src="assets/pictures/her_baby_pic.jpg" alt="" draggable="false">
+      <div class="hero-text">
+        <h1>Made In The 22</h1>
+        <p class="sub">Exclusive Birthday Release · A New Chapter by Lynn Margaret Julian</p>
+      </div>
+    </section>
+
+    <!-- ================= Dedication + controls ================= -->
+    <section class="foot">
+      <p class="desc">
+        This album is dedicated to the beautiful woman who made me relate to every love song, simply because somehow, every lyric reminds me of you. Happy birthday, wifey! May this new chapter of your life be filled with all the love, money, happiness, and beautiful moments you deserve.<br>
+        Now playing: Your most beautiful year.
+      </p>
+
+      <div class="controls">
+        <svg class="more deco" viewBox="0 0 48 12" aria-hidden="true"><circle cx="6" cy="6" r="5.500" fill="currentColor"/><circle cx="24" cy="6" r="5.500" fill="currentColor"/><circle cx="42" cy="6" r="5.500" fill="currentColor"/></svg>
+        <span class="add deco" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 5v22M5 16h22" stroke="currentColor" stroke-width="2.600" stroke-linecap="round"/></svg></span>
+        <button class="play" id="playBtn" type="button" aria-label="Play">
+          <svg class="i-play" viewBox="0 0 40 48"><path d="M5 3.500v41a2 2 0 0 0 3 1.700l33-20.500a2 2 0 0 0 0-3.400L8 1.800A2 2 0 0 0 5 3.500z" fill="currentColor" transform="translate(-2 0) scale(.96 1)"/></svg>
+          <svg class="i-pause" viewBox="0 0 40 48"><rect x="6" y="4" width="10" height="40" rx="2" fill="currentColor"/><rect x="24" y="4" width="10" height="40" rx="2" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <audio id="song" src="assets/sound/bday_audio.mp3" preload="none"></audio>
+  <script src="assets/app.js"></script>
+  <script src="assets/album-redirect.js"></script>
+</body>
+</html>

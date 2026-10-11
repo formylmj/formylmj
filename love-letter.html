@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, Baby.</title>
+  <meta name="theme-color" content="#f8c7d8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/shell.css">
+  <link rel="stylesheet" href="assets/love-letter.css">
+</head>
+<body class="app" data-page="letter">
+  <div class="stage">
+    <header class="nav" id="nav"></header>
+    <nav class="side ab" id="side" aria-label="Pages" style="--x:24;--y:183;--w:262;--h:779"></nav>
+
+    <main class="content letter-layout">
+
+      <!-- ================= The letter (the only part that scrolls) ================= -->
+      <article class="letter-page ab" id="letterPage" tabindex="0" aria-labelledby="letterHeading"
+               style="--x:304;--y:181;--w:730;--h:781">
+        <h1 class="letter-title" id="letterHeading">Happy Birthday, Baby.</h1>
+
+        <!-- one <p> per paragraph: edit the text freely -->
+        <div class="letter-text">
+          <p>Sooo happy birthday, my baby! I know my gift might not be that much, but I really hope it made you happy, even just a little bit. I wanted to make something special for you because you deserve to feel loved and celebrated, especially on your birthday.</p>
+
+          <p>Since sabi mo nga, parang lagi na lang may mga bad memories or something sad na nangyayari before your birthday, I want to change that little by little. I want you to have happier memories to look back on whenever your birthday comes around. I want you to remember na every birthday mo, you'll always have people who love and care about you, especially me and your friends. No matter what happens, what you do, or what kind of day you're having, we're always here lang for you. You don't have to go through everything alone, mahal ko. And since I can't be there beside you to celebrate, hug you, kiss you, and spend the day with you, I thought I'd make this little corner of the internet just for you since ayun lang naman keri ko. At least in this way, I can give you something that I made with so much love, kahit na through a screen lang muna tayo.</p>
+
+          <p>Ginawa ko siyang spotify-inspired since that's one of your most-used applications, besides steam kasi my baby can't live without her beloved music. I put everything together while thinking about you, from the lyrics that remind me of you to the pictures I love looking at and the birthday messages from the people who care about you. I wanted this website to be something you could look through whenever you want, especially on days when you need a little reminder of how special you are. I hope that whenever you revisit this website, it makes you smile kahit papaano and reminds you of how many people are happy that you exist.</p>
+
+          <p>I'm so proud of you and of the person you are, mahal ko. I know you feel sad sometimes because you're growing older, yet you feel like you're still somewhat stuck in the same place, especially when it comes to college. But I just want you to remember na you can always do things at your own pace. You don't have to rush yourself just because other people seem to be moving faster or because you think you should've accomplished more by now. You don't have to have everything figured out right now, baby. You can take your time, make mistakes, rest when you're tired, and keep growing at your own pace. I'm proud of you even when you feel like you're not doing enough, and I hope you learn to be proud of yourself, too. I hope this year gives you more chances to discover things you love, accomplish the things you've been wanting to do, and make more memories that you'll look back on with a smile, sana with me lagi hehe.</p>
+
+          <p>Alam kong birthday mo and dapat ikaw lang ang nagwiwish, pero gusto ko rin magwish for us. I hope that one day, or hopefully soon, we finally get to celebrate your birthday together. I want to experience what it's like to be beside you on your special day, give you your gifts personally, hug you as much as I want, and make up for all the hugs and kisses I can only give you through a screen for now. Lalap to the max ka talaga sa akin, tsaka birthday se&mdash; emz. But seriously, I really hope that we get to spend your birthday together someday. I want to make more memories with you that we can look back on when we're older.</p>
+
+          <p>I'm so thankful for this day, and I really love that you were born, mahal ko. This is the day na isinilang sa mundo yung pinakamagandang nilalang na magpapasaya sa akin in ways I never expected. Thank you for being here, baby. Thank you for being yourself and for letting me be part of your life. I'm so, so, so happy na nakilala kita, and I'm really, really, really thankful to you for giving me the chance to love you, mahal ko, kahit na andaming 99+ others na nakapila.</p>
+
+          <p>I'm genuinely grateful that I get to know you, love you, and celebrate another year of your life with you, baby.. I hope I can continue making you feel appreciated, supported, and loved, not just on your birthday but even on ordinary days when there's nothing special happening. All I want is to make you feel loved, special, and cared for every single day, hanggang sa tumanda tayo and even in our other lifetimes, mahal ko. I want to keep choosing you, loving you, and making you happy hanggang sa kaya ko, in this lifetime and in every lifetime after this.</p>
+
+          <p>Sooo happy birthday again, my princess! I love you so much, and I hope you have the happiest birthday ever. Sana marami kang matanggap na blessings this year, especially the ones you've been praying for, and syempre sana marami ka ring pera so you can buy all the things you wanna buy po. I hope you get more reasons to smile, more opportunities to do the things you love, and more happy memories to look forward to. You deserve all the love and happiness in the world, and I'll always be here cheering you on and reminding you of that whenever you need it. I love youuu so so so muchhhhh my baby! Happy birthday again, mahal ko.</p>
+        </div>
+      </article>
+
+      <!-- ================= Message from the Artist (stays put) ================= -->
+      <aside class="artist ab" id="artist" aria-label="Message from the Artist"
+             style="--x:1058;--y:181;--w:345;--h:781">
+        <img class="artist-photo" src="assets/pictures/raine.jpg" alt="" draggable="false">
+        <h2 class="artist-title">Message from the Artist</h2>
+
+        <div class="progress">
+          <span class="time" id="timeNow">0:00</span>
+          <input class="seek" id="seek" type="range" min="0" max="1000" step="1" value="0"
+                 aria-label="Seek through the recording" disabled>
+          <span class="time" id="timeTotal">0:00</span>
+        </div>
+
+        <div class="controls">
+          <span class="ctl ctl-extra" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path fill="currentColor" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/><path fill="currentColor" d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/></svg>
+          </span>
+          <button class="ctl ctl-btn ctl-prev" id="restartBtn" type="button" aria-label="Back to the start">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3.5 3a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.233.066 1.233.696v7.384c0 .63-.692 1.010-1.233.697L4.500 7.753V11a.5.5 0 0 1-1 0z"/></svg>
+          </button>
+          <button class="play" id="playBtn" type="button" aria-label="Play the love letter">
+            <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.010 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg>
+            <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M5.500 3.500A1.500 1.500 0 0 1 7 5v6a1.500 1.500 0 0 1-3 0V5a1.500 1.500 0 0 1 1.500-1.500zm5 0A1.500 1.500 0 0 1 12 5v6a1.500 1.500 0 0 1-3 0V5a1.500 1.500 0 0 1 1.500-1.500z"/></svg>
+          </button>
+          <span class="ctl ctl-extra" aria-hidden="true">
+            <svg viewBox="0 0 16 16"><path fill="currentColor" d="M12.500 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.300 4 3.678 4 4.308v7.384c0 .63.692 1.010 1.233.697L11.500 8.753V12a.5.5 0 0 0 1 0z"/></svg>
+          </span>
+          <button class="ctl ctl-btn ctl-extra" id="repeatBtn" type="button" aria-pressed="false" aria-label="Repeat">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.360 1.966c.12.100.12.284 0 .384l-2.360 1.966a.25.25 0 0 1-.41-.192zm3.810.086a.5.5 0 0 1 .670.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.360-1.966a.25.25 0 0 1 0-.384l2.360-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.670z"/></svg>
+          </button>
+        </div>
+
+        <audio id="loveAudio" src="assets/sound/Love%20Letter.mp3" preload="metadata"></audio>
+      </aside>
+
+    </main>
+  </div>
+
+  <script src="assets/shell.js"></script>
+  <script src="assets/love-letter.js"></script>
+</body>
+</html>
