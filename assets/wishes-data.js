@@ -1,12 +1,4 @@
-/* =========================================================
-   Birthday Wishes - the messages from her friends.
-   One entry per friend, in the order the cards appear.
 
-   blocks = what the pop-up shows, top to bottom:
-     "text"                       -> a paragraph (a line break inside the text is kept)
-     { image: "path", alt: "..." } -> a picture
-     { video: "path" }             -> a portrait (TikTok-style) video
-   ========================================================= */
 window.WISHES = [
   {
     id: "bnd",
@@ -26,6 +18,17 @@ window.WISHES = [
       "happy birthday, lynn! ( ◜‿◝ )♡"
     ]
   },
+
+  {
+    id: "aila",
+    name: "Aila",
+    blocks: [
+      "Happy Birthday Lynnn!",
+      "Thank you for being born, I'm so glad that I have you as my friend. Though we only had a year para maging close nung grade 12 era natin, still I didn't expect that we will be able to be friends who understand each other. I'm honestly amazed by how hardworking and bold you are. I remember when you told me na nag shift ka ng course, I can't help but think na you're emotionally strong and strong-willed, your willing to take the risk and will try to do your own way to achieve your goal even though it's out of the norm, that's one thing I admire about you, latter is, you being a hardworking person. You're one of the few person I know who are not just knowledgeable in various grounds but also someone who already have an expertise in these fields such as art, instrument, political etc. na para bang all-in-one ka na lol.",
+      "These just reflects how hardworking you are, you've allotted great deal of time, effort, commitment and consistent enthusiasm to learn those skills, \"talent\" alone is insufficient to describe your hardwork. These are just a few of the reasons why I admire your character. You're one of a kind, and I'm genuinely happy and grateful to be a friend of someone as venerable as you. Happy Birthday ulit lynn, I hope that will be able see each other in person soon."
+    ]
+  },
+
   {
     id: "molly",
     name: "Molly",
@@ -106,5 +109,18 @@ window.WISHES = [
     blocks: [
       "Happy 22nd birthday lynn, more blessings to come sa buhay mo, enjoy both the good and bad of life tas tngina wla nako maisip pero susubukan ko.. ang isda ay fish parin kahit marami na ang mundo ay bilog pero di talga, always stay positive kase at the end of the day gabi na tas isipin mo yung mga jokes ko para di ka badtrip pangit kase pag naka simangot lalaki butas ng ilong mo. Yun lng i got no more words of wisdom"
     ]
+  },
+
+    {
+    id: "honey",
+    name: "Honey",
+    blocks: [
+      "Hi, Lyyyyyyyyynn",
+      "Happy birthdaaaaaaay!",
+      "Hope you have a good birthday, with good food, good drinks, and good company.",
+      "Thank you for pulling me into the group whenever you can. You make me feel wanted 🩷",
+      "Love youuuu"
+    ]
   }
+
 ];
