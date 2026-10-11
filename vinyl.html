@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Happy Birthday, my princess</title>
+  <meta name="theme-color" content="#ffe4e9">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">
+      <span class="line-1">Happy Birthday,</span>
+      <span class="line-2">my princess
+        <svg class="heart" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg>
+      </span>
+    </h1>
+
+    <p class="message">
+      I wish I could be there beside you to sing this for you,<br>
+      so... I made this for you instead.
+    </p>
+
+    <!-- Turntable: drag the tonearm onto the record to play, lift it off to stop -->
+    <div class="player" id="player">
+      <img class="disc" src="assets/pictures/disc.png" alt="" draggable="false">
+      <div class="arm" id="arm">
+        <img src="assets/pictures/arm.png" alt="" draggable="false">
+        <button class="arm-handle" id="handle" type="button"
+                aria-label="Tonearm. Drag it onto the record to play, or press Enter to toggle"></button>
+      </div>
+    </div>
+
+    <p class="finished">Finished listening?</p>
+    <a class="btn-continue" id="continueBtn" href="profiles.html">
+      Continue
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0z"/></svg>
+    </a>
+
+    <audio id="song" src="assets/sound/bday_audio.mp3" preload="auto"></audio>
+  </main>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
