@@ -1,0 +1,137 @@
+/* =========================================================
+   Birthday Wishes page  (birthday-wishes.html)
+   Extra rules only - shell.css is not modified.
+
+   --k is the size unit: 1px on phones, 1u (= 1px of the 1440 x 1024
+   Figma frame, scaled to the screen) on desktop. Sizes below use the
+   numbers measured from the design.
+   ========================================================= */
+:root { --k: 1px; --rose: #7a2c4a; --card: #fddde4; --card-line: #f0a8bd; }
+
+/* ---------- heading ---------- */
+.wishes-sub { margin: 8px 0 0; font-size: clamp(.95rem, 3.4vw, 1.2rem); line-height: 1.35; }
+
+/* ---------- cards ---------- */
+.wishes { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+
+.wish-card {
+  position: relative; display: flex; flex-direction: column;
+  width: 100%; min-height: calc(170 * var(--k)); padding: 0;
+  border: 0; border-radius: calc(8 * var(--k));
+  background: var(--card); color: var(--rose);
+  font: inherit; text-align: left; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.wish-card:hover, .wish-card:focus-visible {
+  transform: translateY(calc(-4 * var(--k)));
+  box-shadow: 0 calc(12 * var(--k)) calc(26 * var(--k)) rgba(0, 0, 0, .35);
+}
+.wish-card:active { transform: scale(.98); }
+
+.wish-top {
+  flex: none; display: flex; align-items: center; gap: calc(17 * var(--k));
+  min-height: calc(87 * var(--k));
+  margin: 0 calc(10 * var(--k)); padding: calc(16 * var(--k)) calc(5 * var(--k)) calc(5 * var(--k)) calc(7 * var(--k));
+  border-bottom: 1px solid var(--card-line);
+}
+.vinyl { flex: none; display: block; width: calc(66 * var(--k)); height: calc(66 * var(--k)); }
+.wish-from { flex: 1; min-width: 0; font-size: calc(18 * var(--k)); line-height: calc(22 * var(--k)); font-weight: 500; overflow-wrap: anywhere; }
+.wish-from span { display: block; }
+.wish-chev { flex: none; width: calc(12 * var(--k)); height: calc(12 * var(--k)); opacity: .75; }
+
+.wish-preview {
+  /* margins (not padding) so the clamped box is exactly two lines tall: no third line peeks out */
+  margin: calc(16 * var(--k)) calc(17 * var(--k)) calc(14 * var(--k)); padding: 0;
+  font-size: calc(18 * var(--k)); line-height: calc(22 * var(--k)); font-style: italic;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2;
+  max-height: calc(44 * var(--k));
+  overflow: hidden; overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .wishes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+}
+
+/* ---------- pop-up with the whole message ---------- */
+.wishbox {
+  position: relative; display: flex; flex-direction: column;
+  width: min(760px, 100%);
+  max-height: min(90vh, 840px); max-height: min(90svh, 840px);
+  border-radius: 20px; overflow: hidden;
+  background: linear-gradient(180deg, #ffeef2 0%, var(--card) 100%);
+  color: #6f2744;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .1);
+  animation: pop .22s ease-out;
+}
+.wishbox .x { background: rgba(122, 44, 74, .1); color: var(--rose); }
+.wishbox .x:hover { background: rgba(217, 139, 167, .55); }
+
+.wishbox-head {
+  flex: none; display: flex; align-items: center; gap: 16px;
+  padding: 22px 68px 18px 26px; border-bottom: 1px solid var(--card-line);
+}
+.wishbox-head .vinyl { width: 64px; height: 64px; animation: wish-spin 6s linear infinite; }
+.wishbox-from { margin: 0; font-size: .95rem; line-height: 1.2; opacity: .8; }
+.wishbox-name { margin: 3px 0 0; font-size: clamp(1.5rem, 5.4vw, 2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+
+.wishbox-scroll { overflow-y: auto; overscroll-behavior: contain; padding: 22px 26px 30px; }
+.wishbox-scroll p { margin: 0 0 1.05em; font-size: 1.02rem; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere; }
+.wishbox-scroll p:last-child { margin-bottom: 0; }
+
+.wish-media { margin: 1.3em 0; display: flex; justify-content: center; }
+.wish-media img {
+  display: block; max-width: 100%; height: auto;
+  max-height: min(64vh, 540px); max-height: min(64svh, 540px);
+  object-fit: contain; border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(122, 44, 74, .28);
+}
+.wish-media-missing {
+  margin: 0; padding: 18px 20px; max-width: 100%;
+  border: 2px dashed var(--card-line); border-radius: 14px;
+  font-size: .9rem; line-height: 1.4; text-align: center; opacity: .85; overflow-wrap: anywhere;
+}
+.wish-video {
+  position: relative; height: min(72vh, 580px); height: min(72svh, 580px);
+  aspect-ratio: 9 / 16; max-width: 100%;
+  border-radius: 18px; overflow: hidden; background: #000;
+  box-shadow: 0 12px 32px rgba(122, 44, 74, .35);
+}
+.wish-video video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
+.wish-video-error { margin: 0; padding: 24px; color: #fff; text-align: center; font-size: .95rem; position: absolute; inset: 0; display: grid; place-items: center; }
+
+@keyframes wish-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .wishbox, .wishbox-head .vinyl { animation: none; }
+  .wish-card { transition: none; }
+}
+
+/* =========================================================
+   Desktop / laptop / iPad landscape  ->  same 1440 x 1024 stage as shell.css
+   ========================================================= */
+@media (min-width: 1000px) and (min-aspect-ratio: 6/5) {
+  :root { --k: var(--u); }
+
+  .wishes-sub { margin-top: calc(11 * var(--u)); font-size: calc(24 * var(--u)); line-height: calc(30 * var(--u)); }
+
+  /* the card area scrolls by itself; the sidebar and the heading stay put */
+  .wishes-scroll {
+    overflow-y: auto; overscroll-behavior: contain;
+    padding: calc(8 * var(--u)) calc(26 * var(--u)) calc(48 * var(--u)) calc(8 * var(--u));
+    scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, .4) transparent;
+    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 36 * var(--u)), transparent 100%);
+            mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 36 * var(--u)), transparent 100%);
+  }
+  .wishes-scroll::-webkit-scrollbar { width: 8px; }
+  .wishes-scroll::-webkit-scrollbar-track { background: transparent; }
+  .wishes-scroll::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .35); border-radius: 4px; }
+  .wishes-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, .55); }
+
+  .wishes { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: calc(170 * var(--u)); gap: calc(23 * var(--u)) calc(34 * var(--u)); }
+  .wish-card { min-height: 0; height: 100%; }
+}
+
+@media (max-width: 420px) {
+  .wishbox-scroll { padding: 18px 18px 26px; }
+  .wishbox-head { padding: 18px 60px 14px 18px; gap: 12px; }
+  .wishbox-head .vinyl { width: 52px; height: 52px; }
+}
