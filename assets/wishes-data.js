@@ -1,4 +1,12 @@
+/* =========================================================
+   Birthday Wishes - the messages from her friends.
+   One entry per friend, in the order the cards appear.
 
+   blocks = what the pop-up shows, top to bottom:
+     "text"                       -> a paragraph (a line break inside the text is kept)
+     { image: "path", alt: "..." } -> a picture
+     { video: "path" }             -> a portrait (TikTok-style) video
+   ========================================================= */
 window.WISHES = [
   {
     id: "bnd",
